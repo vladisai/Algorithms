@@ -1,0 +1,65 @@
+class f_tree
+{
+    public:
+        f_tree(int sz)
+        {
+            a = new int[sz+5];
+            size = sz;
+            memset(a,0,sizeof(a)*(size+5));
+        }
+
+        void add(int ind, int valen)
+        {
+            ind++;
+            while (ind<=size)
+            {
+               a[ind] += valen;
+               ind = next(ind);
+            }
+        }
+
+        int sum(int ind)
+        {
+            ind++;
+            int res = 0;
+            while (ind > 0)
+            {
+                res += a[ind];
+                ind = prev(ind);
+            }
+            return res;
+        }
+
+        int sum(int len, int r)
+        {
+            if (len>r)
+                return 0;
+            return sum(r)-sum(len-1);
+        }
+
+        void inc(int ind)
+        {
+            add(ind,1);
+        }
+
+        void dec(int ind)
+        {
+            add(ind,-1);
+        }
+
+
+    private:
+        int size;
+        int * a;
+
+        inline int next(int x)
+        {
+            return x += x & -x;
+        }
+
+        inline int prev(int x)
+        {
+            return x -= x & -x;
+        }
+
+};
