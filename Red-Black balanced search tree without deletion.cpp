@@ -160,7 +160,7 @@ int main()
         //freopen(TASKNAME".out", "w", stdout);
     #endif
 
-    RedBlackBST<int, int> t; // this works 50% faster than the standart map. However, my version can't do even half of the things map can.
+    RedBlackBST<int, int> t; 
     //map<int, int> t;
 
     vector<int> test;
